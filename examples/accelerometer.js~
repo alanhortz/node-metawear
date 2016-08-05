@@ -13,9 +13,7 @@ devices.discover(function(device) {
 
     device.connectAndSetup(function(error) {
         console.log('were connected!');
-
-/*  
-      console.log('Start accelerometer with ' + rate + 'hz ang +-' + range + 'g');
+        console.log('Start accelerometer with ' + rate + 'hz ang +-' + range + 'g');
 
         var accelerometer = new device.Accelerometer(device);
         var logger        = new device.Log(device);
@@ -30,20 +28,7 @@ devices.discover(function(device) {
         accelerometer.start();
 
         accelerometer.onChange(function(data) {
-            //console.log("x:", data.x, "\t\ty:", data.y, "\t\tz:", data.z);
+            console.log("x:", data.x, "\t\ty:", data.y, "\t\tz:", data.z);
         });
-*/
-	setInterval(function() {
-	    device._peripheral.updateRssi();
-	}, 2000);
-
-    });
-
-    setInterval(function(){
-	device._peripheral.updateRssi();
-    },2000);
-    
-    device._peripheral.once('rssiUpdate', function (rssi){
-       console.log(rssi);
     });
 });
