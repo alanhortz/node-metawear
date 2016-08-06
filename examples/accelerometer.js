@@ -6,7 +6,7 @@ var range = parseFloat(process.argv[3]) || 2;
 
 var sensor = null;
 
-devices.discoverById(function(device) {
+devices.discoverById(id, function(device) {
     
     sensor = device;
 
