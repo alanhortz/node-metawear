@@ -5,6 +5,7 @@ var rate  = parseFloat(process.argv[2]) || 50;
 var range = parseFloat(process.argv[3]) || 2;
 
 var sensor = null;
+var id = 'c9ee6389a176';
 
 devices.discoverById(id, function(device) {
     
