@@ -13,13 +13,13 @@ devices.discoverById(id, function(device) {
 
     device.connectAndSetup(function() {
         console.log('connected and setup');
+        setTimeout(function() {device.disconnect();}, 2000);
     });
 
 
     device.on('disconnect', function() {
         console.log('we got disconnected! :( ');
     });
-
 
 });
 
