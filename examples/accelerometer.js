@@ -7,18 +7,21 @@ var range = parseFloat(process.argv[3]) || 2;
 var sensor = null;
 var id = 'c9ee6389a176';
 
-devices.discoverById(id, function(device) {
+console.log('started');
+
+devices.discover(function(device) {
     
     sensor = device;
 
     device.connectAndSetup(function() {
         console.log('connected and setup');
-        setTimeout(function() {device.disconnect();}, 2000);
+        setTimeout(function() {device.disconnect();}, 5000);
     });
 
 
     device.on('disconnect', function() {
         console.log('we got disconnected! :( ');
+	process.exit();
     });
 
 });
