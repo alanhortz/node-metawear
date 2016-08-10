@@ -7,6 +7,7 @@ var range = parseFloat(process.argv[3]) || 2;
 var sensor = null;
 var id = 'c9ee6389a176';
 
+<<<<<<< HEAD
 // TODO : Retest the discovery with device.discoverById(id, callback)
 
 devices.discover(function(device) {
@@ -49,11 +50,13 @@ devices.discover(function(device) {
         }, 1000);
 
 
-        setTimeout(function() {device.disconnect();}, 2000);
+
+
     });
 
     device.on('disconnect', function() {
         console.log('we got disconnected! :( ');
+	process.exit();
     });
 
     device._peripheral.on('rssiUpdate', function (rssi){
