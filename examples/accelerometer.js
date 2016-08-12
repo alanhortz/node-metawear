@@ -70,24 +70,59 @@ devices.discover(function(device) {
 
     device.on('disconnect', function() {
         console.log('we got disconnected! :( ');
-        led.config
-            .setColor(led.config.BLUE)
-            .setRiseTime(1000)
-            .setHighTime(500)
-            .setFallTime(1000)
-            .setPulseDuration(2500)
-            .setRepeatCount(2)
-            .setHighIntensity(16)
-            .setLowIntensity(1);
-
-        led.commitConfig();
-        led.play(true);
-
+        
         process.exit();
     });
 
     device._peripheral.on('rssiUpdate', function (rssi){
        console.log(rssi);
+
+       if(-90 > rssi > -70) {
+            led.config
+                .setColor(led.config.RED)
+                .setRiseTime(1000)
+                .setHighTime(500)
+                .setFallTime(1000)
+                .setPulseDuration(2500)
+                .setRepeatCount(20)
+                .setHighIntensity(16)
+                .setLowIntensity(1);
+
+            led.commitConfig();
+            led.play(true);        
+       }
+
+       if(-70 > rssi > -50) {
+            led.config
+                .setColor(led.config.BLUE)
+                .setRiseTime(1000)
+                .setHighTime(500)
+                .setFallTime(1000)
+                .setPulseDuration(2500)
+                .setRepeatCount(20)
+                .setHighIntensity(16)
+                .setLowIntensity(1);
+
+            led.commitConfig();
+            led.play(true);        
+       }
+
+       if(-50 > rssi > -20) {
+            led.config
+                .setColor(led.config.GREEN)
+                .setRiseTime(1000)
+                .setHighTime(500)
+                .setFallTime(1000)
+                .setPulseDuration(2500)
+                .setRepeatCount(20)
+                .setHighIntensity(16)
+                .setLowIntensity(1);
+
+            led.commitConfig();
+            led.play(true);        
+       }
+
+
        if(rssi < -75) device.disconnect();
     });
     
