@@ -10,7 +10,7 @@ var id = 'c9ee6389a176';
 
 // TODO : Retest the discovery with device.discoverById(id, callback)
 
-devices.discover(function(device) {
+devices.discoverAll(function(device) {
 
     console.log('discovered device ', device.address, device.uuid);
 

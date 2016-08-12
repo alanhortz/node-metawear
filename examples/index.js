@@ -15,6 +15,5 @@ function launchChild() {
     });
 }
 
+launchChild();
 
-launchChild();
-launchChild();
