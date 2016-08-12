@@ -77,7 +77,7 @@ devices.discover(function(device) {
 
     device._peripheral.on('rssiUpdate', function (rssi){
        console.log(rssi);
-       getProximity(-59, rssi);
+       console.log(getProximity(-59, rssi));
 
        if(rssi < -75) device.disconnect();
     });
@@ -201,10 +201,6 @@ function getProximity(measuredPower, rssi) {
           result = 'near';
         } else if ( median >= higherThreshold) {
           result = 'far';
-        }
-
-        if (result) {
-          console.log('name : ', name, ' result: ', result);
         }
 
         return result;
