@@ -13,7 +13,9 @@ var id = 'c9ee6389a176';
 devices.discover(function(device) {
 
     console.log('discovered device ', device.address, device.uuid);
-
+    
+    var led           = new device.Led(device);
+    
     device.connectAndSetup(function() {
         
         console.log('were connected!');
@@ -21,6 +23,7 @@ devices.discover(function(device) {
         
         var accelerometer = new device.Accelerometer(device);
         var logger        = new device.Log(device);
+        
         var switched = true;
 
         accelerometer.setOutputDataRate(rate);
@@ -49,14 +52,38 @@ devices.discover(function(device) {
             }
         }, 1000);
 
+        led.config
+            .setColor(led.config.BLUE)
+            .setRiseTime(1000)
+            .setHighTime(500)
+            .setFallTime(1000)
+            .setPulseDuration(2500)
+            .setRepeatCount(20)
+            .setHighIntensity(16)
+            .setLowIntensity(1);
 
+        led.commitConfig();
+        led.play(true);
 
 
     });
 
     device.on('disconnect', function() {
         console.log('we got disconnected! :( ');
-	process.exit();
+        led.config
+            .setColor(led.config.BLUE)
+            .setRiseTime(1000)
+            .setHighTime(500)
+            .setFallTime(1000)
+            .setPulseDuration(2500)
+            .setRepeatCount(2)
+            .setHighIntensity(16)
+            .setLowIntensity(1);
+
+        led.commitConfig();
+        led.play(true);
+
+        process.exit();
     });
 
     device._peripheral.on('rssiUpdate', function (rssi){
