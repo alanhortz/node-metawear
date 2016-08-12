@@ -77,7 +77,7 @@ devices.discover(function(device) {
 
     device._peripheral.on('rssiUpdate', function (rssi){
        console.log(rssi);
-       console.log(getProximity(-65, rssi));
+       console.log(getProximity(4, rssi));
 
        if(rssi < -75) device.disconnect();
     });
