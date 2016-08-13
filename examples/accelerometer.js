@@ -25,7 +25,10 @@ var higherThreshold = 0.9;
 
 // TODO : Retest the discovery with device.discoverById(id, callback)
 
-devices.discoverById(id, function(device) {
+devices.discoverWithFilter(function(device) {
+    console.log(device.uuid);
+    return (device.uuid === id);
+},function(device) {
 
     console.log('discovered device ', device.address, device.uuid);
     
