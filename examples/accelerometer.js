@@ -23,12 +23,30 @@ var bufforSize = 6;
 var lowerThreshold = 0.4;
 var higherThreshold = 0.9;
 
+// 'c9ee6389a176'
+// 'fbb6e441835e'
+
+
 // TODO : Retest the discovery with device.discoverById(id, callback)
+
+// devices.discoverWithFilter(function(device) {
+//     console.log(device.uuid);
+//     return (device.uuid === id);
+// },handleDevice);
+
 
 devices.discoverWithFilter(function(device) {
     console.log(device.uuid);
-    return (device.uuid === id);
-},function(device) {
+    return (device.uuid === 'c9ee6389a176');
+},handleDevice);
+
+devices.discoverWithFilter(function(device) {
+    console.log(device.uuid);
+    return (device.uuid === 'fbb6e441835e');
+},handleDevice);
+
+
+function handleDevice(device) {
 
     console.log('discovered device ', device.address, device.uuid);
     
@@ -86,8 +104,7 @@ devices.discoverWithFilter(function(device) {
        if(rssi < -100) device.disconnect();
     });
     
-});
-
+}
 function calculateAccuracy(measuredPower, rssi) {
   
   //var txPower = -59 //hard coded power value. Usually ranges between -59 to -65
