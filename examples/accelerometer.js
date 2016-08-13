@@ -84,7 +84,7 @@ devices.discoverById(id, function(device) {
        console.log(rssi);
        //console.log(getProximity(4, rssi));
 
-       if(rssi < -100) device.disconnect();
+       if(rssi < -108) device.disconnect();
     });
     
 });
