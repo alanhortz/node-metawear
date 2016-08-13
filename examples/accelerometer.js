@@ -2,8 +2,9 @@
 require("javascript.util");
 var devices = require('./../src/device');
 
-var rate  = parseFloat(process.argv[2]) || 50;
-var range = parseFloat(process.argv[3]) || 2;
+var id = process.argv[2];
+var rate  = parseFloat(process.argv[3]) || 50;
+var range = parseFloat(process.argv[4]) || 2;
 
 var sensor = null;
 var id = 'c9ee6389a176';
@@ -24,7 +25,7 @@ var higherThreshold = 0.9;
 
 // TODO : Retest the discovery with device.discoverById(id, callback)
 
-devices.discover(function(device) {
+devices.discoverAll(function(device) {
 
     console.log('discovered device ', device.address, device.uuid);
     
@@ -77,9 +78,9 @@ devices.discover(function(device) {
 
     device._peripheral.on('rssiUpdate', function (rssi){
        console.log(rssi);
-       console.log(getProximity(4, rssi));
+       //console.log(getProximity(4, rssi));
 
-       if(rssi < -75) device.disconnect();
+       if(rssi < -100) device.disconnect();
     });
     
 });
@@ -130,6 +131,12 @@ function getMedian(arrayList) {
         return (arrayList.get(middle-1) + arrayList.get(middle)) / 2.0;
     }
 }
+
+/*
+    Because we cannot measure the transmit power (txPower) of the MetaWear,
+    board we will extract the kalman filter from the getProximity function
+    to work only on the rssi.
+*/
 
 function getProximity(measuredPower, rssi) {
         var result;
