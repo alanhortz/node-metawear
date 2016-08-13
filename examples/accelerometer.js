@@ -31,6 +31,10 @@ devices.discoverById(id, function(device) {
     
     var led           = new device.Led(device);
     
+    device.connect(function() {
+        console.log('connected');
+    });
+
     device.connectAndSetup(function() {
         
         console.log('were connected!');
