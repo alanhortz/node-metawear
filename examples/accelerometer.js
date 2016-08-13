@@ -7,7 +7,7 @@ var rate  = parseFloat(process.argv[3]) || 50;
 var range = parseFloat(process.argv[4]) || 2;
 
 var sensor = null;
-var id = 'c9ee6389a176';
+//var id = 'c9ee6389a176';
 
 
 var ArrayList = javascript.util.ArrayList;
