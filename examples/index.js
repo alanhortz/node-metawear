@@ -16,4 +16,5 @@ function launchChild() {
 }
 
 launchChild();
+launchChild();
 
