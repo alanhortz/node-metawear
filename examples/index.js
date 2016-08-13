@@ -11,10 +11,10 @@ function launchChild(id) {
 
     ls.on('close', function(code) {
         console.log('child process exited with code ' + code);
-        launchChild();
+        launchChild(id);
     });
 }
 
-launchChild('c9:ee:63:89:a1:76');
-launchChild('fb:b6:e4:41:83:5e');
+launchChild('c9ee6389a176');
+launchChild('fbb6e441835e');
 
