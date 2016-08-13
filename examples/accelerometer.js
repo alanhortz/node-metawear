@@ -7,7 +7,7 @@ var rate  = parseFloat(process.argv[3]) || 50;
 var range = parseFloat(process.argv[4]) || 2;
 
 var sensor = null;
-var id = 'c9ee6389a176';
+
 
 
 var ArrayList = javascript.util.ArrayList;
@@ -25,7 +25,7 @@ var higherThreshold = 0.9;
 
 // TODO : Retest the discovery with device.discoverById(id, callback)
 
-devices.discoverAll(function(device) {
+devices.discoverById(id, function(device) {
 
     console.log('discovered device ', device.address, device.uuid);
     
