@@ -15,6 +15,7 @@ function launchChild(id) {
     });
 }
 
-launchChild('c9ee6389a176');
-launchChild('fbb6e441835e');
+launchChild(process.argv[1]);
+//launchChild('c9ee6389a176');
+//launchChild('fbb6e441835e');
 
