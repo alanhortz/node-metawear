@@ -242,6 +242,10 @@ Log.prototype.removeAll = function() {
 };
 
 Log.getLoggingTick = function(response) {
+    if(!response || response.length <= 2) {
+        return undefined;
+    }
+
     var tick  = response.readInt32LE(2,4);
     var resetUid = (response.length > 6) ? response[6] : -1;
 

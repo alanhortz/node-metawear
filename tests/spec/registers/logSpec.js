@@ -25,6 +25,15 @@ describe("Log", function() {
 			expect(referenceTick.tick).toEqual(1590289784);
 
 		});
+
+		it('should prevent any error to occurs during the parsing of the tick', function() {
+			var response = new Buffer([0xb, 0x84]);
+
+			var referenceTick = Log.getLoggingTick(response);
+
+			expect(referenceTick).toBeUndefined();
+
+		})
 	});
 
 	describe('downloadLog()', function() {
