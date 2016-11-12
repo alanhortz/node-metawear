@@ -5,9 +5,9 @@
   "main": "src/device.js",
   "dependencies": {
     "debug": "~2.2",
-    "eventemitter2": "~1.0",
+    "eventemitter2": "~2.1",
     "hashmap": "^2.0.5",
-    "noble-device": "^1.4.1"
+    "noble-device": "~1.4.1"
   },
   "devDependencies": {
     "buffer-equal": "^1.0.0",
