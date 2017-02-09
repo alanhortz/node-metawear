@@ -8,7 +8,8 @@
 var SensorFusion = require('../../../src/registers/sensorFusion'),
 	SensorFusionConfig = require('../../../src/registers/config/sensorFusion'),
 	Device = require('../helpers/device'),
-	Core = require('../../../src/registers/core'),
+	Quaternion = require('../../../src/registers/core').Quaternion,
+	EulerAngle = require('../../../src/registers/core').EulerAngle,
 	bufferEqual = require('buffer-equal'),
 	clone = require('clone');
 
@@ -78,12 +79,12 @@ const 	config_masks = [
 
 const tests_output = [
 	{
-		'expected': new Core.Quaternion(0.940, -0.050, -0.154, -0.301),
+		'expected': new Quaternion(0.940, -0.050, -0.154, -0.301),
 		'response': new Buffer([0x1b,0x9b,0x70,0x3f,0x8c,0x5e,0x4d,0xbd,0x07,0x7f,0x1d,0xbe,0x78,0x02,0x9a,0xbe]),
 		'data': QUATERNION
 	},
     {
-        'expected' : new Core.EulerAngle(24.747, -120.862, 24.747, -33.046),
+        'expected' : new EulerAngle(24.747, -120.862, 24.747, -33.046),
         'response' : new Buffer([0xb1,0xf9,0xc5,0x41,0x44,0xb9,0xf1,0xc2,0x1a,0x2f,0x04,0xc2,0xb1,0xf9,0xc5,0x41]),
         'data' : EULER_ANGLES
     }	
