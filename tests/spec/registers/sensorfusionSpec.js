@@ -85,7 +85,7 @@ const tests_output = [
     {
         'expected' : new Core.EulerAngle(24.747, -120.862, 24.747, -33.046),
         'response' : new Buffer([0xb1,0xf9,0xc5,0x41,0x44,0xb9,0xf1,0xc2,0x1a,0x2f,0x04,0xc2,0xb1,0xf9,0xc5,0x41]),
-        'data' : EULER_ANGLE
+        'data' : EULER_ANGLES
     }	
 ];
 
@@ -224,10 +224,8 @@ describe('SensorFusion - Metawear Motion R Board', function() {
 			sensorFusion.onChange(foo.callback);
 		});
 
-		//TODO : Implement every data type extraction
-		xit('should properly extract any data type and execute the registered callback', function() {});
 
-		it('should properly extract QUATERNION data type and execute the registered callback', function() {
+		it('should properly extract any data type and execute the registered callback', function() {
 			for(var i = 0; i < tests_output.length; i++) {
 				device.emitter.emit([MODULE_OPCODE, tests_output[i].data], tests_output[i].response, MODULE_OPCODE.toString(16), tests_output[i].data.toString(32));
 				expect(foo.callback.calls.argsFor(0)[0].isEqual(tests_output[i].expected)).toBe(true);

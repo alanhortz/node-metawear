@@ -165,6 +165,15 @@ SensorFusion.prototype.onChange = function(callback)  {
 			Math.round(buffer.readFloatLE(Z_OFFSET) * 1000) / 1000);
 		callback(quaternion);
 	});
+	// TODO refector the OFFSET values to be consistent
+	this.device.emitter.on([MODULE_OPCODE, EULER_ANGLES], function(buffer) {
+		var heading = Math.round(buffer.readFloatLE(W_OFFSET) * 1000) / 1000;
+		var pitch = Math.round(buffer.readFloatLE(X_OFFSET) * 1000) / 1000;
+		var roll = Math.round(buffer.readFloatLE(Y_OFFSET) * 1000) / 1000;
+		var yaw = Math.round(buffer.readFloatLE(Z_OFFSET) * 1000) / 1000;
+		var eulerAngle = new Core.EulerAngle(heading, pitch, yaw, roll);
+		callback(eulerAngle);
+	});
 };
 
 module.exports = SensorFusion;
