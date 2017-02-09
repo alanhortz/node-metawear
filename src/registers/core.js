@@ -1,3 +1,9 @@
+/**
+* Core module
+* @module registers/core
+* @author Alan Hortz [alan@handson.io]
+*/
+
 var Core = {};
 
 Core.isClose = function(fst, snd) {
@@ -35,12 +41,29 @@ Core.Quaternion.prototype.isEqual = function(quaternion) {
 	return Core.isClose(this.w, quaternion.w) && Core.isClose(this.x, quaternion.x) && Core.isClose(this.y, quaternion.y) && Core.isClose(this.z, quaternion.z);
 };
 
+/**
+* @summary Represent an EurlerAngle
+* @class
+*
+* @param {!number} heading - The direction in which the device is pointing
+* @param {!number} pitch - The Y intrinsic rotation axis
+* @param {!number} roll - The X intrinsic rotation axis
+* @param {!number} yaw - The Z intrinsic rotation axis
+*/
+
 Core.EulerAngle = function(heading, pitch, roll, yaw) {
 	this.heading = heading;
 	this.pitch = pitch;
 	this.roll = roll;
 	this.yaw = yaw;
 };
+
+/**
+* @summary 	Compares this instance with another instance of an EulerAngle object regarding their relative closeness 
+*			whith a tolerance of 0.001
+* @function isEqual
+* @param {EulerAngle} - An instance of an EulerAngle object
+*/
 
 Core.EulerAngle.prototype.isEqual = function(eulerAngle) {
 	return Core.isClose(this.heading, eulerAngle.heading) && Core.isClose(this.pitch, eulerAngle.pitch) && Core.isClose(this.roll, eulerAngle.roll) && Core.isClose(this.yaw, eulerAngle.yaw);
