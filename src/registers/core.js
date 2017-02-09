@@ -47,15 +47,15 @@ Core.Quaternion.prototype.isEqual = function(quaternion) {
 *
 * @param {!number} heading - The direction in which the device is pointing
 * @param {!number} pitch - The Y intrinsic rotation axis
-* @param {!number} roll - The X intrinsic rotation axis
 * @param {!number} yaw - The Z intrinsic rotation axis
+* @param {!number} roll - The X intrinsic rotation axis
 */
 
-Core.EulerAngle = function(heading, pitch, roll, yaw) {
+Core.EulerAngle = function(heading, pitch, yaw, roll) {
 	this.heading = heading;
 	this.pitch = pitch;
-	this.roll = roll;
 	this.yaw = yaw;
+	this.roll = roll;
 };
 
 /**
@@ -66,7 +66,7 @@ Core.EulerAngle = function(heading, pitch, roll, yaw) {
 */
 
 Core.EulerAngle.prototype.isEqual = function(eulerAngle) {
-	return Core.isClose(this.heading, eulerAngle.heading) && Core.isClose(this.pitch, eulerAngle.pitch) && Core.isClose(this.roll, eulerAngle.roll) && Core.isClose(this.yaw, eulerAngle.yaw);
+	return Core.isClose(this.heading, eulerAngle.heading) && Core.isClose(this.pitch, eulerAngle.pitch) && Core.isClose(this.yaw, eulerAngle.yaw) && Core.isClose(this.roll, eulerAngle.roll);
 };
 
 module.exports = Core;
