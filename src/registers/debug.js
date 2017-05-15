@@ -1,3 +1,6 @@
+/**
+* @module registers/debug
+*/
 
 const MODULE_OPCODE = 0xfe;
 
@@ -7,9 +10,20 @@ const
     DELAYED_RESET       = 0x5,
     GAP_DISCONNECT      = 0x6;
 
+/**
+* @summary Represents the Debug register
+* @class
+*
+* @param {!Device} device - A connected MetaWear device
+*/
+
 var Debug = function(device) {
     this.device = device;
 };
+
+/**
+* @summary  Performs a soft reset of the device
+*/
 
 Debug.prototype.reset = function() {
     var buffer = new Buffer(2);
